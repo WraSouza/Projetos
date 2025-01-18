@@ -9,7 +9,6 @@
   <ItemGroup>
     <Folder Include="Models\InputModels\" />
     <Folder Include="Queries\GetProjectById\" />
-    <Folder Include="Queries\GetAllActivities\" />
     <Folder Include="Queries\GetActivityById\" />
     <Folder Include="Queries\GetUserById\" />
   </ItemGroup>

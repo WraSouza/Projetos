@@ -13,6 +13,7 @@ namespace Projects.Domain.Entities
             ProjectName = projectName;            
             DeadLine = deadLine;
             IdUser = idUser;
+            Atividades = [];
         }
 
         public string ProjectName { get; private set; }
@@ -20,5 +21,6 @@ namespace Projects.Domain.Entities
         public DateTime DeadLine { get; private set; }
         public User User { get; private set; }
         public int IdUser { get; private set; }
+        public List<Atividade> Atividades { get; private set; }
     }
 }

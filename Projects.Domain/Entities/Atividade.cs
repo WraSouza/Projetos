@@ -1,17 +1,17 @@
 ﻿namespace Projects.Domain.Entities
 {
-    public class Activity : BaseEntity
+    public class Atividade : BaseEntity
     {
-        public Activity(string activityName,DateTime deadLine, int idUser, int idProject)
+        public Atividade(string activityName, DateTime deadLine, int idUser, int idProject)
         {
-            ActivityName = activityName;           
+            ActivityName = activityName;
             IdUser = idUser;
             IdProject = idProject;
             DeadLine = deadLine;
         }
 
         public string ActivityName { get; private set; }
-        public User UserName { get; private set; }
+        public User Client { get; private set; }
         public Project ProjectName { get; private set; }
         public DateTime DeadLine { get; private set; }
         public int IdUser { get; private set; }

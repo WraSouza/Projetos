@@ -1,4 +1,5 @@
 using Microsoft.EntityFrameworkCore;
+using Projects.Application.Commands.CreateActivity;
 using Projects.Application.Commands.CreateProject;
 using Projects.Application.Commands.CreateUser;
 using Projects.Domain.Repositories;
@@ -20,10 +21,12 @@ builder.Services.AddDbContext<ProjetoDbContext>(options => options.UseSqlServer(
 
 builder.Services.AddMediatR(cfg => { cfg.RegisterServicesFromAssemblies(typeof(CreateProjectCommand).Assembly); });
 builder.Services.AddMediatR(cfg => { cfg.RegisterServicesFromAssemblies(typeof(CreateUserCommand).Assembly); });
+builder.Services.AddMediatR(cfg => { cfg.RegisterServicesFromAssemblies(typeof(CreateActivityCommand).Assembly); });
 
 builder.Services.AddScoped<IProjectRepository, ProjectRepository>();
 builder.Services.AddScoped<IUserRepository, UserRepository>();
-builder.Services.AddSingleton<ProjetoDbContext>();
+builder.Services.AddScoped<IActivityRepository, ActivityRepository>();
+
 
 var app = builder.Build();
 

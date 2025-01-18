@@ -16,7 +16,7 @@
         public string Password { get; private set; }
         public string UserName { get; private set; }
         public List<Project> Projects { get; private set; }
-        public List<Activity> Atividades { get; private set; }
+        public List<Atividade> Atividades { get; private set; }
 
     }
 }

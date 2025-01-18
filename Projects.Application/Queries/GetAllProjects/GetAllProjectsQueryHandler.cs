@@ -15,7 +15,7 @@ namespace Projects.Application.Queries.GetAllProjects
 
             foreach(var project in projects)
             {
-                ProjectViewModel model = new ProjectViewModel(project.ProjectName);
+                ProjectViewModel model = new ProjectViewModel(project.ProjectName, project.User.FullName);
 
                 viewModel.Add(model);
             }

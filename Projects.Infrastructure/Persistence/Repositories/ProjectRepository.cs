@@ -20,6 +20,7 @@ namespace Projects.Infrastructure.Persistence.Repositories
         {
             //throw new NotImplementedException();
             var projects = await context.Projects
+                                        .Include(u => u.User)
                                         .Where(p => p.IsActive == true)
                                         .ToListAsync();
 
