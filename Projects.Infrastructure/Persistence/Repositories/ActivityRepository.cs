@@ -8,7 +8,6 @@ namespace Projects.Infrastructure.Persistence.Repositories
     {
         public async Task<int> AddProjectAsync(Atividade activity)
         {
-            //throw new NotImplementedException();
             await context.Activitys.AddAsync(activity);
 
             context.SaveChanges();

@@ -9,7 +9,7 @@ namespace Projects.Application.Queries.GetAllActivities
         public async Task<List<ActivityViewModel>> Handle(GetAllActivitiesQuery request, CancellationToken cancellationToken)
         {
             List<ActivityViewModel> activityViewModels = [];
-            //throw new NotImplementedException();
+           
             var allActivities = await repository.GetAllActivitiesAsync();
 
             foreach (var activity in allActivities)

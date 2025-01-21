@@ -3,9 +3,9 @@ using Projects.Application.Commands.CreateActivity;
 using Projects.Application.Commands.CreateProject;
 using Projects.Application.Commands.CreateUser;
 using Projects.Domain.Repositories;
+using Projects.Infrastructure.Auth;
 using Projects.Infrastructure.Persistence;
 using Projects.Infrastructure.Persistence.Repositories;
-using Scalar.AspNetCore;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -14,6 +14,8 @@ var builder = WebApplication.CreateBuilder(args);
 builder.Services.AddControllers();
 // Learn more about configuring OpenAPI at https://aka.ms/aspnet/openapi
 builder.Services.AddOpenApi();
+
+builder.Services.AddSwaggerGen();
 
 var connectionString = builder.Configuration.GetConnectionString("ProjectCs");
 
@@ -26,6 +28,7 @@ builder.Services.AddMediatR(cfg => { cfg.RegisterServicesFromAssemblies(typeof(C
 builder.Services.AddScoped<IProjectRepository, ProjectRepository>();
 builder.Services.AddScoped<IUserRepository, UserRepository>();
 builder.Services.AddScoped<IActivityRepository, ActivityRepository>();
+builder.Services.AddSingleton<IAuthService, AuthService>();
 
 
 var app = builder.Build();
@@ -34,7 +37,9 @@ var app = builder.Build();
 if (app.Environment.IsDevelopment())
 {
     app.MapOpenApi();
-    app.MapScalarApiReference();
+    app.UseSwagger();   // Generate Swagger JSON
+    app.UseSwaggerUI(); // Serve Swagger UI for interactive API documentation
+    //app.MapScalarApiReference();
 }
 
 app.UseHttpsRedirection();

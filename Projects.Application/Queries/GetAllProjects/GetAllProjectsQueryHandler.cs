@@ -10,7 +10,6 @@ namespace Projects.Application.Queries.GetAllProjects
         {
             List<ProjectViewModel> viewModel = [];
 
-            //throw new NotImplementedException();
             var projects = await repository.GetAllProjectsAsync();
 
             foreach(var project in projects)

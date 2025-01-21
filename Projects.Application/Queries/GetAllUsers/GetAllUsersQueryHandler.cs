@@ -1,23 +1,21 @@
 ﻿using MediatR;
-using Microsoft.AspNetCore.Mvc.Formatters;
-using Org.BouncyCastle.Tls;
-using Projects.Domain.Entities;
+using Projects.Application.Models.ViewModels;
 using Projects.Domain.Repositories;
 
 namespace Projects.Application.Queries.GetAllUsers
 {
-    public class GetAllUsersQueryHandler(IUserRepository repository) : IRequestHandler<GetAllUsersQuery, List<User>>
+    public class GetAllUsersQueryHandler(IUserRepository repository) : IRequestHandler<GetAllUsersQuery, List<UserViewModel>>
     {
-        public async Task<List<User>> Handle(GetAllUsersQuery request, CancellationToken cancellationToken)
+        public async Task<List<UserViewModel>> Handle(GetAllUsersQuery request, CancellationToken cancellationToken)
         {
             //throw new NotImplementedException();
-            List<User> users = [];
+            List<UserViewModel> users = [];
 
             var allUsers = await repository.GetAllUsersAsync();
 
             foreach (var user in allUsers)
             {
-                User newUser = new User(user.FullName, user.Password, user.UserName);
+                UserViewModel newUser = new UserViewModel(user.Id, user.FullName,user.Email, user.Projects, user.Atividades);
 
                 users.Add(newUser);
             }

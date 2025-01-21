@@ -4,10 +4,6 @@ namespace Projects.Domain.Entities
 {
     public class Project : BaseEntity
     {
-        //public Project()
-        //{
-            
-        //}
         public Project(string projectName,DateTime deadLine, int idUser) : base()
         {
             ProjectName = projectName;            

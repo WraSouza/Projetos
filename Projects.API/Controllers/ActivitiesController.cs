@@ -17,7 +17,9 @@ namespace Projects.API.Controllers
 
             var id = await mediator.Send(command);
 
-            return CreatedAtAction(nameof(GetById), new { id = id }, command);
+            return Ok();
+
+            //return CreatedAtAction(nameof(GetById), new { id = id }, command);
             
         }
 
@@ -31,11 +33,11 @@ namespace Projects.API.Controllers
             return Ok(activities);
         }
 
-        [HttpGet("{id}")]
-        public async Task<IActionResult> GetById(int id)
-        {
-            return Ok();
-        }
+        //[HttpGet("{id}")]
+        //public async Task<IActionResult> GetById(int id)
+        //{
+        //    return Ok();
+        //}
 
     }
 }

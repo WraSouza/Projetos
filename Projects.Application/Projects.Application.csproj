@@ -7,7 +7,6 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <Folder Include="Models\InputModels\" />
     <Folder Include="Queries\GetProjectById\" />
     <Folder Include="Queries\GetActivityById\" />
     <Folder Include="Queries\GetUserById\" />
@@ -21,7 +20,6 @@
     </PackageReference>
     <PackageReference Include="Microsoft.EntityFrameworkCore.InMemory" Version="9.0.1" />
     <PackageReference Include="Microsoft.EntityFrameworkCore.SqlServer" Version="9.0.1" />
-    <PackageReference Include="Scalar.AspNetCore" Version="2.0.1" />
     <PackageReference Include="Sentry.AspNetCore" Version="5.0.1" />
     <PackageReference Include="Serilog" Version="4.2.0" />
     <PackageReference Include="Serilog.Enrichers.Environment" Version="3.0.1" />

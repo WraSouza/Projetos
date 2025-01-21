@@ -7,8 +7,7 @@ namespace Projects.Infrastructure.Persistence.Repositories
     public class ProjectRepository(ProjetoDbContext context) : IProjectRepository
     {
         public async Task<int> AddProjectAsync(Project project)
-        {
-            //throw new NotImplementedException();
+        {            
             await context.Projects.AddAsync(project);
 
             context.SaveChanges();
@@ -17,11 +16,9 @@ namespace Projects.Infrastructure.Persistence.Repositories
         }
 
         public async Task<List<Project>> GetAllProjectsAsync()
-        {
-            //throw new NotImplementedException();
+        {            
             var projects = await context.Projects
-                                        .Include(u => u.User)
-                                        .Where(p => p.IsActive == true)
+                                        .Include(u => u.User)                                       
                                         .ToListAsync();
 
             return projects;
