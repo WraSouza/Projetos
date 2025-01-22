@@ -20,5 +20,10 @@
         public List<Project> Projects { get; private set; }
         public List<Atividade> Atividades { get; private set; }
 
+        public void UpdatePassword(string password)
+        {
+            Password = password;
+        }
+
     }
 }

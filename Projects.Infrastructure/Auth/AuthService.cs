@@ -38,13 +38,13 @@ namespace Projects.Infrastructure.Auth
 
             var credentials = new SigningCredentials(key, SecurityAlgorithms.HmacSha256);
 
-            var claims = new List<Claim>
-            {
-                new Claim("username", email),
-                new Claim(ClaimTypes.Role, role)
-            };
+            //var claims = new List<Claim>
+            //{
+            //    new Claim("username", email),
+            //    new Claim(ClaimTypes.Role, role)
+            //};
 
-            var token = new JwtSecurityToken(issuer, audience, claims, null, DateTime.Now.AddHours(2), credentials);
+            var token = new JwtSecurityToken(issuer, audience, null, null, DateTime.Now.AddHours(2), credentials);
 
             return new JwtSecurityTokenHandler().WriteToken(token);
         }
