@@ -15,6 +15,23 @@ namespace Projects.Infrastructure.Persistence.Repositories
             return activity.Id;
         }
 
+        public void FinishActivity(Atividade activity)
+        {
+            context.Activitys.Update(activity);
+
+            context.SaveChanges();
+        }
+
+        public async Task<Atividade> GetActivityByIdAsync(int id)
+        {
+            var allActivity =  await context.Activitys
+                                    .Include(u => u.Client)
+                                    .Include(p => p.ProjectName)
+                                    .SingleOrDefaultAsync(x => x.IdUser == id);
+
+            return allActivity;
+        }
+
         public async Task<List<Atividade>> GetAllActivitiesAsync()
         {
             var allActivity = await context.Activitys

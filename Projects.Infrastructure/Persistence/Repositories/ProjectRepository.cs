@@ -17,11 +17,27 @@ namespace Projects.Infrastructure.Persistence.Repositories
 
         public async Task<List<Project>> GetAllProjectsAsync()
         {            
-            var projects = await context.Projects
-                                        .Include(u => u.User)                                       
+            var projects = await context.Projects                                        
+                                        .Include(u => u.User)                                                                                                               
                                         .ToListAsync();
 
             return projects;
+        }
+
+        public async Task<Project> GetProjectByIdAsync(int id)
+        {
+            var project = await context.Projects
+                                       .Include(u => u.User)
+                                       .FirstOrDefaultAsync(x => x.Id == id);
+
+            return project;
+        }
+
+        public void UpdateProject(Project project)
+        {
+           context.Projects.Update(project);
+
+            context.SaveChanges();
         }
     }
 }

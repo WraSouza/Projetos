@@ -7,6 +7,7 @@ using Projects.Application.Commands.CreateUser;
 using Projects.Application.Models.InputModels;
 using Projects.Application.Models.ViewModels;
 using Projects.Application.Queries.GetAllUsers;
+using Projects.Application.Utilities;
 using Projects.Infrastructure.Auth;
 using Projects.Infrastructure.Notifications;
 using Projects.Infrastructure.Persistence;
@@ -15,7 +16,7 @@ namespace Projects.API.Controllers
 {
     [Route("api/[controller]")]
     [ApiController]
-    [Authorize]
+    
     public class UsersController(IMediator mediator, IAuthService authService, ProjetoDbContext context, IMemoryCache cache, IEmailService emailService) : ControllerBase
     {
         [HttpPost]
@@ -83,14 +84,22 @@ namespace Projects.API.Controllers
                 return BadRequest();
             }
 
+            var newPassword = PasswordGenerator.GenPassword();
+
             var code = new Random().Next(100000, 999999).ToString();
 
             var cacheKey = $"RecoveryCode: {model.Email}";
 
-            cache.Set(cacheKey, code, TimeSpan.FromMinutes(10));
+            //cache.Set(cacheKey, newPassword, TimeSpan.FromMinutes(10));
 
-            await emailService.SendAsync(user.Email, "Código de Recuperação", $"Seu Código de Recuperação é {code}");
-           
+            //await emailService.SendAsync(user.Email, "Código de Recuperação", $"Seu Código de Recuperação é {code}");
+            await emailService.SendAsync(user.Email, "Nova Senha de Acesso", $"Sua Senha de Acesso: {newPassword}");
+
+            var hash = authService.ComputeHash(newPassword);
+
+            user.UpdatePassword(hash);
+
+            await context.SaveChangesAsync();
 
             return NoContent();
         }

@@ -9,7 +9,10 @@ namespace Projects.Domain.Entities
             ProjectName = projectName;            
             DeadLine = deadLine;
             IdUser = idUser;
-            Atividades = [];
+            Atividades = [];  
+            
+            IsFinished = false;
+
         }
 
         public string ProjectName { get; private set; }
@@ -18,5 +21,13 @@ namespace Projects.Domain.Entities
         public User User { get; private set; }
         public int IdUser { get; private set; }
         public List<Atividade> Atividades { get; private set; }
+        public bool IsFinished { get; private set; }
+
+        public void FinishProject()
+        {
+            IsFinished = true;
+            FinishedAt = DateTime.Now;
+        }
+
     }
 }

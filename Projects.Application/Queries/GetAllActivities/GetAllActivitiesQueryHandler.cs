@@ -14,7 +14,7 @@ namespace Projects.Application.Queries.GetAllActivities
 
             foreach (var activity in allActivities)
             {
-                ActivityViewModel viewModel = new ActivityViewModel(activity.ActivityName,activity.Client.FullName, activity.ProjectName.ProjectName,activity.DeadLine);
+                ActivityViewModel viewModel = new ActivityViewModel(activity.Id,activity.IdProject, activity.ActivityName,activity.Client.FullName, activity.ProjectName.ProjectName,activity.DeadLine,activity.FinishedAt, activity.IsActive);
 
                 activityViewModels.Add(viewModel);
             }

@@ -7,8 +7,7 @@ namespace Projects.Application.Queries.GetAllUsers
     public class GetAllUsersQueryHandler(IUserRepository repository) : IRequestHandler<GetAllUsersQuery, List<UserViewModel>>
     {
         public async Task<List<UserViewModel>> Handle(GetAllUsersQuery request, CancellationToken cancellationToken)
-        {
-            //throw new NotImplementedException();
+        {           
             List<UserViewModel> users = [];
 
             var allUsers = await repository.GetAllUsersAsync();

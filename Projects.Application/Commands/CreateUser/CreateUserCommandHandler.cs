@@ -9,9 +9,8 @@ namespace Projects.Application.Commands.CreateUser
     {
         public async Task<int> Handle(CreateUserCommand request, CancellationToken cancellationToken)
         {
-             var hash = authService.ComputeHash(request.Password);
-            
-            //throw new NotImplementedException();
+             var hash = authService.ComputeHash(request.Password);            
+           
             var user = new User(request.FullName, hash, request.Email);
 
             await repository.AddUserAsync(user);

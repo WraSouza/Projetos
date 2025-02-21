@@ -8,5 +8,7 @@ namespace Projects.Domain.Repositories
     {
         Task<int> AddProjectAsync(Atividade activity);
         Task<List<Atividade>> GetAllActivitiesAsync();
+        Task<Atividade> GetActivityByIdAsync(int id); 
+        void FinishActivity(Atividade activity);
     }
 }

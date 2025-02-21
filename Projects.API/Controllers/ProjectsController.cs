@@ -1,6 +1,7 @@
 ﻿using MediatR;
 using Microsoft.AspNetCore.Mvc;
 using Projects.Application.Commands.CreateProject;
+using Projects.Application.Commands.UpdateProject;
 using Projects.Application.Queries.GetAllProjects;
 using Projects.Infrastructure.Persistence;
 
@@ -39,6 +40,22 @@ namespace Projects.API.Controllers
             var projects = await mediatR.Send(getAllProjects);
 
             return Ok(projects);
+        }
+
+        [HttpPut("/finish-project")]
+        public async Task<IActionResult> Finish([FromBody]UpdateProjectCommand command)
+        {
+            var project = new UpdateProjectCommand(command.Id);
+
+            var id = await mediatR.Send(project);
+
+            return NoContent();
+        }
+
+        [HttpPut("/delete-project")]
+        public async Task<IActionResult> Delete()
+        {           
+            return NoContent();
         }
     }
 }

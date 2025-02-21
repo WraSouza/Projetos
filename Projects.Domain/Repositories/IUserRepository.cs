@@ -6,5 +6,6 @@ namespace Projects.Domain.Repositories
     {
         Task<int> AddUserAsync(User user);
         Task<List<User>> GetAllUsersAsync();
+        //bool ChangePassword();
     }
 }

@@ -4,12 +4,12 @@
     {
         protected BaseEntity()
         {
-            CreatedAt = DateTime.Now;
+            CreatedAt = DateTime.Today.AddYears(-2);
             IsActive = true;
         }
 
         public int Id { get; private set; }
         public DateTime CreatedAt { get; private set; }
-        public bool IsActive { get; private set; }
+        public bool IsActive { get; set; }
     }
 }

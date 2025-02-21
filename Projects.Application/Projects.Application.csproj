@@ -8,7 +8,6 @@
 
   <ItemGroup>
     <Folder Include="Queries\GetProjectById\" />
-    <Folder Include="Queries\GetActivityById\" />
     <Folder Include="Queries\GetUserById\" />
   </ItemGroup>
 

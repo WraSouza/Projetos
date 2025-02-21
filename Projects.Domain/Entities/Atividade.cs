@@ -8,6 +8,7 @@
             IdUser = idUser;
             IdProject = idProject;
             DeadLine = deadLine;
+            
         }
 
         public string ActivityName { get; private set; }
@@ -17,5 +18,12 @@
         public int IdUser { get; private set; }
         public int IdProject { get; private set; }
         public DateTime FinishedAt { get; private set; }
+        
+
+        public void FinishActivity()
+        {
+            IsActive = false;
+            FinishedAt = DateTime.Now;
+        }
     }
 }

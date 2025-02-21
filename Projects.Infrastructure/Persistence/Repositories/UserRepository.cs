@@ -8,7 +8,7 @@ namespace Projects.Infrastructure.Persistence.Repositories
     {
         public async Task<int> AddUserAsync(User user)
         {
-            //throw new NotImplementedException();
+            
             await context.Users.AddAsync(user);
 
             context.SaveChanges();
@@ -18,7 +18,7 @@ namespace Projects.Infrastructure.Persistence.Repositories
 
         public async Task<List<User>> GetAllUsersAsync()
         {
-            //throw new NotImplementedException();
+           
             var users = await context.Users
                                 .ToListAsync();
 
